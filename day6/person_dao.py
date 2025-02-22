@@ -67,11 +67,8 @@ class Db_operations:
         id = self.get_latest_row_id()
         return id
 
-    def update_row(self):
-        new_location = input('Enter new location of the person: ')
-        id = int(input('Enter Id of the person to update the location: '))
-        data = (new_location, id)
-        query = f'update persons set location = %s where id = %s'
+    def update_row(self, data):
+        query = f'update persons set name = %s, gender = %s, location = %s, dob = %s where id = %s'
         connection = self.connect_db()
         cursor = connection.cursor()
         cursor.execute(query, data)
@@ -79,8 +76,8 @@ class Db_operations:
         cursor.close()
         self.disconnect_db(connection)
 
-    def delete_row(self):
-        id = int(input('Enter Id of the person to delete: '))
+    def delete_row(self, id):
+        #id = int(input('Enter Id of the person to delete: '))
         query = f'delete from persons where id = {id}'
         connection = self.connect_db()
         cursor = connection.cursor()
@@ -111,19 +108,23 @@ class Db_operations:
         return row
 
     def list_all_rows(self):
-        query = f'select * from persons;'
-        connection = self.connect_db()
-        cursor = connection.cursor()
-        count = cursor.execute(query)
-        if count == 0:
-            print(f'No rows found in the table')
-        else:
-            rows = cursor.fetchall()
-            for row in rows:
-                print(str(row))
-        connection.commit()
-        cursor.close()
-        self.disconnect_db(connection)
+        query = 'select * from persons;'
+        try:
+            connection = self.connect_db()
+            cursor = connection.cursor()
+            count = cursor.execute(query)
+            if count == 0:
+                print(f'No rows found in the table')
+            else:
+                rows = cursor.fetchall()
+                for row in rows:
+                    print(str(row))
+            connection.commit()
+            cursor.close()
+            self.disconnect_db(connection)
+            return rows
+        except:
+            print('Error in reading rows')
 
     def get_latest_row_id(self):
         query = 'select max(id) from persons;'
