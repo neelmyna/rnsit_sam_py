@@ -55,7 +55,6 @@ class Db_operations:
         return (name, gender, location, dob)
 
     def insert_row(self, person):
-        #person = self.read_person_details()
         query = 'insert into persons(name, gender, location, dob) values(%s, %s, %s, %s);'
         person_tuple = (person.name, person.gender, person.location, person.dob)
         connection = self.connect_db()
@@ -119,7 +118,6 @@ class Db_operations:
                 rows = cursor.fetchall()
                 for row in rows:
                     print(str(row))
-            connection.commit()
             cursor.close()
             self.disconnect_db(connection)
             return rows

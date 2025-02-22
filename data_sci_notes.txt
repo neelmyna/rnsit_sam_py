@@ -497,3 +497,18 @@ TREE:
 --------------------------------------------------------
 https://docs.google.com/forms/d/1GCXb1r2epoNm6RdNSz3WqU-LIFICsnRFBuXthjeyPnk/edit
 
+CERTIFICATE CREATION PROJECT:
+
+1. read data from .csv and print them on console
+2. read data from user/console and write it to a .txt file
+3. read person data from console and write it to a .dat file
+4. read data from binary file (.dat file) and print the object data on console.
+
+5. Create a html template for the certificate.
+6. Introduce variables in the html template for USN and NAME
+7. Read data from .csv file (one student data) and insert it in html file.
+8. Read data from .csv file (multiple student data) and insert it in html files.
+
+9. Program to convert .html to .pdf 
+10. Read rows (student data) from .csv file and create the html and insert the data into the html. Lastly convert the .html files into .pdf
+11. Create .zip or .rar for all the pdf files.
