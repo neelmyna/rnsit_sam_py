@@ -65,7 +65,7 @@ for i in range(len(week_spendings)):
 		index = i
 '''
 -------------------------------------------------------
-program5.py
+program6.py
 # Replacing values less than 50 with 0 in an array
 
 # Explanation: Using np.where() to replace values meeting the condition
@@ -94,6 +94,8 @@ if system_number == user_number:
 else:
 	print('RoadPati')
 -------------------------------------------------------
+program9.py
+
 import pandas as pd
 
 def read_excel_file():
@@ -119,6 +121,153 @@ def read_excel_file2():
     df = pd.read_excel(file_path)
     for row in df.iterrows():
        print(row[1][0], row[1][1])
+------------------------------------------------------------
+program10.py
+
+#Difference between np.arange() and np.linspace()
+
+# Explanation: np.arange() generates values with a fixed step, while np.linspace() generates a set number of equally spaced values
+
+sequence_arange = np.arange(1, 10, 3)  # Generates values from 1 to 10 with a step of 3
+sequence_linspace = np.linspace(0, 100, 5)  # Generates 5 equally spaced values between 0 and 100
+print("Using arange:", sequence_arange)
+print("Using linspace:", sequence_linspace)
+------------------------------------------------------------
+program11.py
+
+Output of np.arange(1, 10, 3)
+
+# Explanation: np.arange() generates numbers starting at 1, stopping before 10, with step size 3
+
+sequence = np.arange(1, 10, 3)
+print(sequence)  # Output: [ 1  4  7]
+------------------------------------------------------------
+program11.py
+
+# Generating 23 equally spaced values between 0 and 100
+
+# Explanation: Using np.linspace() to generate specified number of values in a range
+
+values = np.linspace(0, 100, 23)
+print("Generated values:", values)
+print("Total count:", len(values))
+------------------------------------------------------------
+program12.py
+
+# Creating a DataFrame
+
+# Explanation: Using pandas to create a DataFrame from a dictionary
+
+import pandas as pd
+data = {'Name': ['Alice', 'Bob', 'Charlie'],
+        'Age': [25, 30, 35],
+        'Salary': [50000, 60000, 70000]}
+df = pd.DataFrame(data)
+print(df)
+------------------------------------------------------------
+program13.py
+
+# Reading a CSV file and checking for missing values
+
+# Explanation: Using pd.read_csv() to load data and checking for missing values using isnull()
+
+df = pd.read_csv('data.csv')  # Reads the CSV file
+df.head()  # Displays the first 5 rows
+print(df.isnull().sum())  # Counts missing values in each column
+------------------------------------------------------------
+program14.py
+
+# Filtering rows where Salary > 50000
+
+# Explanation: Using boolean indexing to filter rows based on Salary column
+
+high_salary = df[df['Salary'] > 50000]  # Filters rows based on Salary
+print(high_salary)
+------------------------------------------
+program15.py
+
+# Sorting data by Salary in descending order
+
+# Explanation: Using sort_values() to arrange rows based on Salary
+
+df_sorted = df.sort_values(by='Salary', ascending=False)
+print(df_sorted)
+------------------------------------------------------------
+program16.py
+
+Grouping data by Age and calculating mean Salary
+
+# Explanation: Using groupby() to aggregate data and compute mean salary
+
+grouped = df.groupby('Age')['Salary'].mean() 
+# Groups by Age and calculates mean salary
+print(grouped)
+
+select avg(salary) as Avg_Salary from employees group by age;
+------------------------------------------------------------
+program17.py
+
+# Creating a DataFrame from a dictionary
+
+# Explanation: Creating a DataFrame using a dictionary with multiple columns
+
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35],
+    'City': ['New York', 'Los Angeles', 'Chicago']
+}
+df = pd.DataFrame(data)  # Converts dictionary into a DataFrame
+print(df)
+------------------------------------------------------------
+program18.py
+
+# Checking for missing values in a DataFrame
+
+# Explanation: Using isnull() to check for missing values and count occurrences
+
+df = pd.DataFrame({
+    'Name': ['Alice', 'Bob', None],
+    'Age': [25, None, 35],
+    'City': ['New York', 'Los Angeles', 'Chicago']
+})
+print(df.isnull())  # Identifies missing values
+print(df.isnull().sum())  # Counts missing values per column
+------------------------------------------------------------
+program18.py
+
+Selecting a single column from a DataFrame
+
+# Explanation: Accessing specific columns from the DataFrame
+
+print(df['Name'])  # Access column using dictionary-style indexing
+print(df.Age)      # Access column using dot notation
+
+
+------------------------------------------------------------
+program19.py
+
+np_array_data = np.array([[1, 2, 3, 4, 5,], [0, 2, 4, 6, 8], [1, 3, 5, 7, 9], [2, 3, 5, 7, 11], [11, 13, 17, 19, 23]], int)
+
+print(np_array_data[:, 3]
+print(np_array_data[1:4, 3]
+print(np_array_data[:, 2:3]
+print(np_array_data[1:, 1:4]
+------------------------------------------------------------
+program20.py
+
+# Filtering rows in Pandas based on a condition
+
+# Explanation: Using boolean indexing to filter rows where Age > 25
+
+filtered_df = df[df1['Age'] > 25]  # Selects rows where Age > 25
+print(filtered_df)
+------------------------------------------------------------
+program21.py
+
+
+------------------------------------------------------------
+program22.py
+
 ------------------------------------------------------------
 HACKATHON PROBLEMS:
 
