@@ -1,0 +1,161 @@
+program1.py
+
+import numpy as np
+import scipy
+
+array = np.array([[1, 1, 3, 3, 4, 4, 4, 5, 7, 7, 8, 9, 12]])
+
+mean   = np.mean(array)
+median = np.median(array)
+mode   = scipy.mode(array)
+
+print(f'Mean = ', mean)
+print(f'Median = ', median)
+print(f'Mode = ', mode)
+--------------------------------
+program2.py
+
+import numpy as np
+
+array1 = np.array([[1, 2], [3, 4]]) 
+array2 = np.array([[1, 2], [3, 4]]) 
+
+print(array1 == array2) # Does element wise comparison and returns truth value for every comparison which is again stored in the respective sized np array
+
+comparison = (array1 == array2)
+equal_arrays = comparison.all() # Here all the truth values of the inferred np array is taken and if all are True then it returns True, else False.
+
+print(equal_arrays)
+--------------------------------
+program3.py
+
+import numpy as np
+
+# Problem1: Finding indices where spendings are greater than 100
+
+# Explanation: Using np.where() to find indices where the condition is met
+
+week_spendings = np.array([50, 120, 30, 40, 200, 90, 300])
+high_spend = np.where(spendings > 100)
+print(high_spenders) # Output: Indices where the values are greater than 100
+--------------------------------
+program4.py
+# In a np array of spendings of the week, find the highest spending.
+
+import numpy as np
+week_spendings = np.array([50, 120, 30, 40, 200, 90, 300])
+highest_spending = max(week_spendings)
+print(high_spendings)
+-------------------------------------------------------
+program5.py
+# In a np array of spendings of the week, find the highest spending and the day.
+
+import numpy as np
+week_spendings = np.array([50, 120, 30, 40, 200, 90, 300])
+index = 1
+big_spending = week_spendings[0]
+index = np.argmax(week_spendings)
+days = {1:'mon', 2'tue', 3:'wed', 4:'thus', 5'fri', 6:'sat', 7:'sun'}
+print(big_spending, days[index])
+
+'''
+for i in range(len(week_spendings)):
+	if week_spendings[i] > big_spending:
+		big_spending = week_spendings[i]
+		index = i
+'''
+-------------------------------------------------------
+program5.py
+# Replacing values less than 50 with 0 in an array
+
+# Explanation: Using np.where() to replace values meeting the condition
+
+expenses = np.array([20, 60, 5, 80, 45, 90])
+modified_expenses = np.where(expenses < 50, 0, expenses)
+print(modified_expenses)  # Output: [ 0 60  0 80  0 90]
+-------------------------------------------------------
+Program7.py
+
+#Generating random floating-point numbers between 0 and 1
+
+# Explanation: Using np.random.rand() to create a random array of given shape
+
+random_data = np.random.rand(3, 4) # Creates a 3x4 array with random values
+print(random_data)
+-------------------------------------------------------
+program8.py
+
+import math
+
+user_number = int(input('Enter a number of your choice between [0 and 9]: '))
+system_number = math.random(10)
+if system_number == user_number:
+	print('CrorePati')
+else:
+	print('RoadPati')
+-------------------------------------------------------
+import pandas as pd
+
+def read_excel_file():
+    #Define the path to the Excel file
+    file_path = './students.xlsx'
+
+    # Read the Excel file into a pandas DataFrame
+    df = pd.read_excel(file_path)
+
+	# Display the first few rows of the DataFrame
+    print(df.count())
+    print(df.head())
+    print(df.tail())
+
+def read_excel_file1():
+    file_path = './students.xlsx'
+    df = pd.read_excel(file_path)
+    for index, row in df.iterrows():
+        print(row[0], '  ', row[1])
+
+def read_excel_file2():
+    file_path = './students.xlsx'
+    df = pd.read_excel(file_path)
+    for row in df.iterrows():
+       print(row[1][0], row[1][1])
+------------------------------------------------------------
+HACKATHON PROBLEMS:
+
+1. Car wash App
+sales:
+	{id, cust_id, date, service_id, date} Optional
+	id, customer, service, date, amount
+	
+	a. the month when we can bring in discounts
+	b. the month when we can bring surcharge
+	c. give a coupon to the valuable customer who did not turn up since over 2 months
+	d. display the monthly sales of a year
+	e. divide the day into 4 parts and display the sales using pie chart
+	
+2. Kanti Sweets
+inventory:
+	sweet_id,
+	
+	a. Which sweet sells more in a specific month
+	b. when the company revenues are highest during the year
+	c. Yearly sales data comparision
+	d. which sweet was wasted the most (sold less)
+	
+3. Kings coffee
+	types of coffee available
+	sources to buy coffee seeds
+	
+	a. From the past years of data of buying seeds and the sales, help the cooffee shop to analyse and infer the best cofee seeds supplier.
+	b. Compare the sales of instant coffee and filter coffee
+	c. With the customer feedback, help the cooffee shop owner to know if water quantity should be reduced or increased. 
+	d. With the sales data help the owner to compare the sales of coffee with sugar, jagaury and sugar free.
+	
+4. 
+5.
+6.
+7.
+8.
+
+Kaggle
+
