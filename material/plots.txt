@@ -1,0 +1,184 @@
+# LINE PLOT
+# Problem Statement: Visualizing a sine wave using a line plot.
+# Question: How does a sine wave behave over a continuous range of values?
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Generate 100 points between 0 and 10
+x = np.linspace(0, 10, 100)  
+# Compute sine function values
+y = np.sin(x)  
+
+# Plot sine wave
+plt.plot(x, y, label="Sine Wave")  
+plt.xlabel("X-axis")  # Label for x-axis
+plt.ylabel("Y-axis")  # Label for y-axis
+plt.title("Line Plot")  # Title of the plot
+plt.legend()  # Display legend
+plt.show()  # Show the plot
+
+# SCATTER PLOT
+# Problem Statement: Understanding the correlation between two variables.
+# Question: What pattern can we observe in the scatter plot of randomly generated values?
+
+# Generate 50 random values for x and y
+x = np.random.rand(50)
+y = np.random.rand(50)
+
+# Create scatter plot
+plt.scatter(x, y, color='red', marker='o')
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
+plt.title("Scatter Plot")
+plt.show()
+
+# BAR PLOT
+# Problem Statement: Comparing categorical data using a bar chart.
+# Question: Which category has the highest value in the given dataset?
+
+# Define categories and their corresponding values
+categories = ['A', 'B', 'C', 'D']
+values = [10, 20, 15, 25]
+
+# Create bar chart
+plt.bar(categories, values, color=['blue', 'green', 'red', 'purple'])
+plt.xlabel("Categories")
+plt.ylabel("Values")
+plt.title("Bar Chart")
+plt.show()
+
+# HORIZONTAL BAR PLOT
+# Problem Statement: Displaying categorical data with long labels in a horizontal format.
+# Question: Which category has the highest value in the horizontal bar chart?
+
+# Create horizontal bar chart
+plt.barh(categories, values, color='orange')
+plt.xlabel("Values")
+plt.ylabel("Categories")
+plt.title("Horizontal Bar Chart")
+plt.show()
+
+# HISTOGRAM
+# Problem Statement: Analyzing the frequency distribution of normally distributed data.
+# Question: How is the data distributed across different bins?
+
+# Generate normally distributed random data
+data = np.random.randn(1000)
+
+# Create histogram with 30 bins
+plt.hist(data, bins=30, color='green', edgecolor='black')
+plt.xlabel("Value")
+plt.ylabel("Frequency")
+plt.title("Histogram")
+plt.show()
+
+# PIE CHART
+# Problem Statement: Representing the market share of different brands.
+# Question: Which brand has the largest market share?
+
+# Define sizes and labels for pie chart
+sizes = [30, 20, 25, 25]
+labels = ['A', 'B', 'C', 'D']
+colors = ['blue', 'red', 'green', 'purple']
+
+# Create pie chart
+plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)
+plt.title("Pie Chart")
+plt.show()
+
+# BOX PLOT
+# Problem Statement: Displaying data distribution and outliers using a box plot.
+# Question: Which category has the highest spread in the dataset?
+
+# Generate random data for 4 categories
+data = [np.random.randn(100) for _ in range(4)]
+
+# Create box plot
+plt.boxplot(data, patch_artist=True)
+plt.xlabel("Category")
+plt.ylabel("Values")
+plt.title("Box Plot")
+plt.show()
+
+# VIOLIN PLOT
+# Problem Statement: Comparing multiple distributions using a violin plot.
+# Question: How does the density of data differ across categories?
+
+# Create violin plot
+plt.violinplot(data)
+plt.xlabel("Category")
+plt.ylabel("Values")
+plt.title("Violin Plot")
+plt.show()
+
+# 3D SCATTER PLOT
+# Problem Statement: Visualizing relationships between three variables in a 3D space.
+# Question: How are the three random variables distributed in the 3D space?
+
+from mpl_toolkits.mplot3d import Axes3D
+
+# Generate 50 random values for x, y, and z
+x = np.random.rand(50)
+y = np.random.rand(50)
+z = np.random.rand(50)
+
+# Create 3D figure and axis
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Create 3D scatter plot
+ax.scatter(x, y, z, color='red')
+ax.set_xlabel("X-axis")
+ax.set_ylabel("Y-axis")
+ax.set_zlabel("Z-axis")
+ax.set_title("3D Scatter Plot")
+plt.show()
+
+# HEATMAP
+# Problem Statement: Understanding data distribution using a heatmap.
+# Question: What areas in the matrix have the highest intensity values?
+
+import seaborn as sns
+
+data = np.random.rand(10,10)  # Generate a 10x10 matrix of random values
+
+# Create heatmap
+plt.imshow(data, cmap='coolwarm', interpolation='nearest')
+plt.colorbar()
+plt.title("Heatmap")
+plt.show()
+
+# SEABORN PAIR PLOT
+# Problem Statement: Analyzing relationships between multiple stock market variables.
+# Question: How do different variables relate to each other in the dataset?
+
+data_dict = {
+    "total_bill": np.random.uniform(5, 50, 100),
+    "tip": np.random.uniform(1, 10, 100),
+    "sex": np.random.choice(["Male", "Female"], 100),
+    "smoker": np.random.choice(["Yes", "No"], 100),
+    "day": np.random.choice(["Thur", "Fri", "Sat", "Sun"], 100),
+    "time": np.random.choice(["Lunch", "Dinner"], 100),
+    "size": np.random.randint(1, 6, 100)
+}
+
+# Convert dictionary to DataFrame
+data_df = pd.DataFrame(data_dict)
+
+# Create pair plot using seaborn
+sns.pairplot(data_df, hue="sex")
+plt.title("Pair Plot")
+plt.show()
+
+# SEABORN HEATMAP
+# Problem Statement: Understanding correlations between different financial factors.
+# Question: Which two variables have the highest positive correlation?
+
+# Compute correlation matrix
+corr = data_df.corr()
+
+# Create heatmap with correlation values
+sns.heatmap(corr, annot=True, cmap="coolwarm", linewidths=0.5)
+plt.title("Heatmap")
+plt.show()
