@@ -1,8 +1,4 @@
 
-
-
-
-
 1. Case Study Statement:
 '''
 This analysis provides an in-depth understanding of the performance of IPL players based on various parameters such as runs scored, wickets taken, team performance, and player nationality. The insights gained can help IPL teams and selectors in making informed decisions regarding player selection, team strategies, and talent scouting. 

@@ -989,16 +989,37 @@ inventory:
 	types of coffee available
 	sources to buy coffee seeds
 	
-	a. From the past years of data of buying seeds and the sales, help the cooffee shop to analyse and infer the best cofee seeds supplier.
+	a. From the past years of data    of buying seeds and the sales, help the cooffee shop to analyse and infer the best cofee seeds supplier.
 	b. Compare the sales of instant coffee and filter coffee
 	c. With the customer feedback, help the cooffee shop owner to know if water quantity should be reduced or increased. 
 	d. With the sales data help the owner to compare the sales of coffee with sugar, jagaury and sugar free.
 	
-4. 
-5.
-6.
-7.
-8.
+4. Amount of Food being wasted in College Hostels
+(Food wastage management system)
+	The amount of food prepared
+	Amount of food consumed
+	Help how the food wastage can be brought down
+	How data can help Students who take food on plates but waste them
+	How the food being thrown can be redirected to other places
+	
+5. How Bengaluru Traffic can be de-congested with help of Data Analytics (Traffic Management system)
+
+6. Normal Delivery Percentage vs C-section Devliveries
+	Which part of the country has more C-section deliveries
+	Which hospitals have more C-Section deliveries
+	Does C-section deliveries and seasons have any relation?
+	What percentage of 2nd child birth has normal delivery when when 1st devilery was by C-section
+
+7. Data Analytics on engineering students optiing the branches
+	Which branch has more possibility of growth
+	which branch has currently the least demand
+	which branch has currently the highest demand
+	which branch is morely likely to go down in demand
+
+8. Analize the data of Indian Airlines and bring out the following:
+	1. Top 3 sectors
+	2. Which sector in future will see more demand
+	3. Which airline is more likely to grow by market share
+
 
 Kaggle
-
