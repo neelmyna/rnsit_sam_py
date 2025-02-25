@@ -1016,10 +1016,10 @@ inventory:
 	which branch has currently the highest demand
 	which branch is morely likely to go down in demand
 
-8. Analize the data of Indian Airlines and bring out the following:
+8. Analize the data of Indian Airlines and bring out the following: (DATA ANALYTICS ON INDIGO BUSINESS MODEL)
 	1. Top 3 sectors
 	2. Which sector in future will see more demand
 	3. Which airline is more likely to grow by market share
 
-
 Kaggle
+--------------------------------------------------
