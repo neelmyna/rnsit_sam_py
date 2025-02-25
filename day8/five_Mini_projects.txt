@@ -1,0 +1,571 @@
+
+
+
+
+
+1. Case Study Statement:
+'''
+This analysis provides an in-depth understanding of the performance of IPL players based on various parameters such as runs scored, wickets taken, team performance, and player nationality. The insights gained can help IPL teams and selectors in making informed decisions regarding player selection, team strategies, and talent scouting. 
+
+By leveraging data-driven analytics, franchises can identify key performers, discover underrated talents, and optimize their squad compositions for upcoming seasons. Moreover, this analysis highlights the importance of experienced Indian batsmen for consistency, the contribution of overseas players in bowling, and the potential of uncapped players as promising assets for the future of IPL cricket.
+
+
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+
+# Load the dataset
+df = pd.read_csv('IPLData.csv')
+
+# Reading the data
+print(df)
+
+# Understanding the data structure
+print(df.info())  # Provides data types and non-null values
+print(df.isnull().sum())  # Check for missing values
+print(df.describe())  # Summary statistics for numerical data
+
+# Handling missing values
+# Fill missing numerical values with median
+df.fillna(df.median(numeric_only=True), inplace=True)
+
+# Fill missing categorical values with mode
+for col in df.select_dtypes(include=['object']).columns:
+    df[col].fillna(df[col].mode()[0], inplace=True)
+
+# Verify missing values are handled
+print(df.isnull().sum())
+
+# Statistical analysis
+
+# Top five run scorers
+'''# Get top 5 run scorers
+top_run_scorers = df[['Player Name', 'Team', 'Runs']].sort_values(by='Runs', ascending=False).head(5)
+print(top_run_scorers)
+
+# Plot top 5 run scorers
+plt.figure(figsize=(8,5))
+sns.barplot(data=top_run_scorers, x="Runs", y="Player Name", palette="viridis")
+plt.xlabel("Total Runs")
+plt.ylabel("Player Name")
+plt.title("Top 5 Run Scorers in IPL")
+plt.show()'''
+
+# Top five wicket takers
+'''# Get top 5 wicket-takers
+top_wicket_takers = df[['Player Name', 'Team', 'Wickets']].sort_values(by='Wickets', ascending=False).head(5)
+print(top_wicket_takers)
+
+# Plot top 5 wicket takers
+plt.figure(figsize=(14,5))
+sns.barplot(data=top_wicket_takers, x="Wickets", y="Player Name", palette="coolwarm")
+plt.xlabel("Total Wickets")
+plt.ylabel("Player Name")
+plt.title("Top 5 Wicket-Takers in IPL")
+plt.show()'''
+
+# Team-wise performance
+'''# Aggregate team performance
+team_performance = df.groupby('Team').agg({'Runs': 'sum', 'Wickets': 'sum'}).reset_index()
+print(team_performance)
+
+# Plot team-wise runs
+plt.figure(figsize=(10,5))
+sns.barplot(data=team_performance, x="Runs", y="Team", palette="magma")
+plt.xlabel("Total Runs")
+plt.ylabel("Team")
+plt.title("Total Runs by Each Team")
+plt.show()
+
+# Plot team-wise wickets
+plt.figure(figsize=(10,5))
+sns.barplot(data=team_performance, x="Wickets", y="Team", palette="Blues_r")
+plt.xlabel("Total Wickets")
+plt.ylabel("Team")
+plt.title("Total Wickets by Each Team")
+plt.show()'''
+
+# Indian vs Overseas Players
+'''# Group by nationality
+nationality_performance = df.groupby('Nationality').agg({'Runs': 'mean', 'Average': 'mean', 'Wickets': 'mean'}).reset_index()
+print(nationality_performance)
+
+# Plot the comparison
+plt.figure(figsize=(8,5))
+sns.barplot(data=nationality_performance.melt(id_vars=["Nationality"]), x="variable", y="value", hue="Nationality", palette="pastel")
+plt.xlabel("Metric")
+plt.ylabel("Average Value")
+plt.title("Comparison of Indian vs Overseas Players")
+plt.show()'''
+
+# Capped and uncapped Players
+'''# Group by capped status
+capped_performance = df.groupby('Capped').agg({'Runs': 'mean', 'Average': 'mean', 'Wickets': 'mean'}).reset_index()
+print(capped_performance)
+
+# Plot the comparison
+plt.figure(figsize=(8,5))
+sns.barplot(data=capped_performance.melt(id_vars=["Capped"]), x="variable", y="value", hue="Capped", palette="Set2")
+plt.xlabel("Metric")
+plt.ylabel("Average Value")
+plt.title("Capped vs Uncapped Players' Performance")
+plt.show()'''
+
+# Conclusion from IPL Data Analysis
+'''
+1. Top Players:
+   - Virat Kohli is the leading run-scorer with 6283 runs, followed by Shikhar Dhawan and Rohit Sharma.
+   - Dwayne Bravo has taken the most wickets (167 wickets), followed by Benny Howell and R. Ashwin.
+
+2. Team-wise Performance:
+   - Bangalore has scored the most runs overall, while Punjab has taken the most wickets.
+   - Teams like Mumbai, Chennai, and Kolkata are also consistently strong in both batting and bowling.
+
+3. Indian vs Overseas Players:
+   - Indian players have a higher average number of runs per player but slightly lower wickets compared to overseas players.
+   - Overseas players have better bowling averages, indicating their effectiveness in taking wickets.
+
+4. Capped vs Uncapped Players:
+   - Uncapped players have a better batting average (25.69) than capped players (20.37) but have taken fewer wickets.
+   - Capped players have higher total runs, likely due to playing more matches.
+
+5. Insights for Teams and Selectors:
+   - Teams looking for consistent run-scorers should focus on experienced Indian batsmen.
+   - For strong bowling options, overseas all-rounders and bowlers provide better economy rates.
+   - Uncapped players can be valuable for their batting consistency, even if they don’t have high total runs.
+'''
+
+
+
+
+
+
+
+2. Case Study Statement:
+'''
+This analysis examines the key factors influencing wine quality using a dataset of wine attributes. By employing exploratory data analysis, feature engineering, and machine learning techniques, we identify significant correlations and predictors of wine quality. The study demonstrates that acidity, alcohol content, and other chemical properties play crucial roles in determining wine ratings. Utilizing a Random Forest classifier, we achieve reliable predictions, offering insights into how different attributes contribute to a wine's perceived quality. The findings can guide wine manufacturers in refining their production processes and improving overall quality control.
+
+
+
+
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Loading the dataset
+df = pd.read_csv('wine.csv')
+'''print(df.head())
+
+# Statistical information
+print(df.describe())
+
+# Datatype Information
+print(df.info())
+'''
+
+# DATA VISUALIZATION
+# Correlation Heatmap
+
+'''import seaborn as sns
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+sns.heatmap(df.corr(), annot=True, cmap="coolwarm", linewidths=0.5)
+plt.title("Feature Correlation Heatmap")
+plt.show()'''
+
+# Distribution of wine quality
+
+'''sns.countplot(x="quality", data=df, palette="viridis")
+plt.title("Distribution of Wine Quality")
+plt.xlabel("Quality Rating")
+plt.ylabel("Count")
+plt.show()'''
+
+# Relationship Between Key Features and Quality
+
+'''sns.boxplot(x="quality", y="fixed acidity", data=df, palette="coolwarm")
+plt.title("Fixed Acidity vs. Wine Quality")
+plt.show()'''
+
+# DATA PREPROCESSING
+
+'''# Convert quality scores (e.g., quality ≥ 7 as good wine)
+df["quality_label"] = df["quality"].apply(lambda x: 1 if x >= 7 else 0)
+
+# Normalize feature columns
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+features = df.drop(["quality", "quality_label"], axis=1)
+df_scaled = pd.DataFrame(scaler.fit_transform(features), columns=features.columns)
+df_scaled["quality_label"] = df["quality_label"]
+
+
+# TRAINING AND TESTING MODELS
+
+from sklearn.model_selection import train_test_split
+
+X = df_scaled.drop("quality_label", axis=1)
+y = df_scaled["quality_label"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+# Random forest
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Predictions
+y_pred = model.predict(X_test)
+
+# Evaluate model
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print(classification_report(y_test, y_pred))
+
+
+# FEATURE IMPORTANCE
+
+importances = model.feature_importances_
+feature_names = X.columns
+
+# Plot feature importance
+plt.figure(figsize=(10, 5))
+sns.barplot(x=importances, y=feature_names, palette="magma")
+plt.title("Feature Importance in Wine Quality Prediction")
+plt.xlabel("Importance Score")
+plt.show()
+
+
+
+
+
+
+
+
+
+3.Case Study Problem Statement
+'''
+This analysis aims to examine employee salary distribution based on various factors such as team, gender, and bonus percentage.
+The goal is to identify salary disparities, patterns among teams, and the influence of bonuses on employee earnings.
+The insights derived from this study will help HR departments make data-driven decisions regarding salary adjustments, 
+compensation fairness, and team-wise financial structuring.
+
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+
+# Load the dataset
+df = pd.read_csv('employee.csv')
+
+# Display first few rows of the dataset
+print(df.head()) 
+
+# Checking for missing values
+print(df.isnull().sum())
+
+# Drop rows where 'Gender' is missing
+df = df.dropna(subset=['Gender'])
+
+# Display updated dataset
+print(df)
+
+# Re-check missing values
+print(df.isnull().sum())
+
+# Drop rows where 'Senior Management' and 'Team' are missing
+df = df.dropna(subset=['Senior Management'])
+df = df.dropna(subset=['Team'])
+
+# Display updated dataset
+print(df)
+print(df.isnull().sum())
+
+# Encode categorical variables
+label_encoders = {}  # Store encoders for later inverse transformation if needed
+
+for column in ["First Name", "Gender", "Senior Management", "Team"]:
+    le = LabelEncoder()
+    df[column] = le.fit_transform(df[column].astype(str))  # Convert to string before encoding
+    label_encoders[column] = le  # Store encoder for future use
+
+# Print the transformed DataFrame
+print(df.head())
+
+# Convert float columns to integers for better analysis
+for column in df.select_dtypes(include=['float']).columns:
+    df[column] = df[column].astype(int)
+
+# Print the transformed DataFrame
+print(df)
+
+
+
+# Visualization of Salary Distribution per Team
+plt.figure(figsize=(10, 5))
+sns.barplot(x="Team", y="Salary", data=df, palette="viridis")
+plt.xlabel("Team")
+plt.ylabel("Salary")
+plt.title("Salary Distribution per Team")
+plt.xticks(rotation=45)
+plt.show()
+
+# Histogram for Salary Distribution
+plt.figure(figsize=(8, 5))
+sns.histplot(df["Salary"], bins=5, kde=True, color="blue")
+plt.xlabel("Salary")
+plt.ylabel("Frequency")
+plt.title("Salary Distribution")
+plt.show()
+
+# Boxplot of Salary by Gender
+plt.figure(figsize=(8, 5))
+sns.boxplot(x="Gender", y="Salary", data=df, palette="coolwarm")
+plt.xlabel("Gender (0 = Female, 1 = Male)")
+plt.ylabel("Salary")
+plt.title("Salary Distribution by Gender")
+plt.show()
+
+# Scatter Plot - Salary vs Bonus
+plt.figure(figsize=(8, 5))
+sns.scatterplot(x="Bonus %", y="Salary", data=df, hue="Gender", palette="Dark2", s=100)
+plt.xlabel("Bonus %")
+plt.ylabel("Salary")
+plt.title("Salary vs Bonus %")
+plt.legend(title="Gender", labels=["Female", "Male"])
+plt.show()
+
+
+
+
+4.# Case Study: House Price Analysis
+Objective: The goal of this analysis is to understand the factors influencing house prices based on various attributes like square footage, number of bedrooms, neighborhood, and construction material (brick or not). The study involves data preprocessing, encoding categorical variables, and visualizing trends to derive insights for better decision-making.
+
+
+
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv("book1.csv")
+
+# Display first few rows to understand the structure of the dataset
+print(df.head())
+
+# Understanding the dataset: Checking data types and structure
+print(df.info())
+
+# Checking for missing values in each column
+print(df.isnull().sum())
+
+from sklearn.preprocessing import LabelEncoder
+
+# Encoding categorical variables
+df['Brick'] = LabelEncoder().fit_transform(df['Brick'])
+df['Neighborhood'] = LabelEncoder().fit_transform(df['Neighborhood'])
+
+# Display the transformed dataset
+print(df)
+
+# DATA VISUALIZATION
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+# House Price Distribution
+# This histogram visualizes the distribution of house prices in the dataset
+'''plt.figure(figsize=(8, 5))
+sns.histplot(df["Price"], bins=30, kde=True, color="blue")
+plt.title("House Price Distribution")
+plt.xlabel("Price")
+plt.ylabel("Frequency")
+#plt.show()'''
+
+# Feature Correlation Heatmap
+# This heatmap shows the correlation between different numerical features to understand their relationships with price
+'''plt.figure(figsize=(10, 6))
+sns.heatmap(df.corr(), annot=True, cmap="coolwarm", fmt=".2f", linewidths=0.5)
+plt.title("Feature Correlation Heatmap")
+#plt.show()'''
+
+# Price vs Square Footage
+# Scatter plot to see how house price varies with square footage
+'''plt.figure(figsize=(8, 5))
+sns.scatterplot(x=df["SqFt"], y=df["Price"], alpha=0.6, color="red")
+plt.title("Price vs. Square Footage")
+plt.xlabel("Square Footage (SqFt)")
+plt.ylabel("Price")
+plt.show()'''
+
+# Price vs Number of Bedrooms
+# Boxplot to analyze the impact of the number of bedrooms on house price
+plt.figure(figsize=(10,5))
+sns.boxplot(x=df["Bedrooms"], y=df["Price"], palette="coolwarm")
+plt.title("Price vs. Number of Bedrooms")
+plt.xlabel("Number of Bedrooms")
+plt.ylabel("Price")
+plt.show()
+
+# Average House Price by Neighborhood
+# Bar plot to analyze the average house price in different neighborhoods
+'''plt.figure(figsize=(12, 6))
+sns.barplot(x=df["Neighborhood"], y=df["Price"], estimator=np.mean, palette="magma")
+plt.xticks(rotation=45)
+plt.title("Average House Price by Neighborhood")
+plt.xlabel("Neighborhood")
+plt.ylabel("Average Price")
+plt.show()
+'''
+
+# Impact of Brick Houses on Price
+# Boxplot to visualize whether houses made of brick influence house prices
+'''plt.figure(figsize=(6, 5))
+sns.boxplot(x=df["Brick"], y=df["Price"], palette="coolwarm")
+plt.title("Impact of Brick Houses on Price")
+plt.xlabel("Brick House (Yes/No)")
+plt.ylabel("Price")
+plt.show()
+'''
+
+
+
+
+5.# Movie Data Analysis
+# Problem Statement:
+# The objective of this analysis is to explore trends in movie earnings, budgets, and factors influencing their success.
+# We aim to identify the top-grossing movies, budget distribution by genre, and the impact of leading studios on box office performance.
+# The analysis will help uncover patterns in movie revenue and provide insights into what contributes to a movie's commercial success.
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+
+# Load the dataset
+# The dataset contains information about various movies, including budget, earnings, genre, and production studio.
+df = pd.read_csv('movies.csv')
+
+# Display the first few rows of the dataset
+print(df)
+
+# Understanding the structure of the dataset
+print(df.info())
+
+# Statistical summary of numerical columns
+print(df.describe())
+
+# Checking for missing values
+print(df.isnull().sum())
+
+# Handling missing values:
+# Replace NaN values with 0 and replace infinite values with 0 to maintain consistency in calculations
+df = df.fillna(0).replace([np.inf, -np.inf], 0)
+
+# Convert only float columns to int for better analysis
+df[df.select_dtypes(include=['float']).columns] = df.select_dtypes(include=['float']).astype(int)
+
+# Display the cleaned dataset
+print(df)
+
+# Re-check for any remaining missing values
+print(df.isnull().sum())
+
+# Data Visualization
+# The following plots help analyze movie trends and financial performance.
+
+'''# 1. Histogram: Distribution of World Gross
+# This histogram shows the frequency distribution of world gross earnings.
+sns.set_style("whitegrid")
+plt.figure(figsize=(10, 6))
+sns.histplot(df["WorldGross"], bins=20, kde=True, color="blue")
+plt.title("Distribution of World Gross", fontsize=14, fontweight='bold')
+plt.xlabel("World Gross (in millions)")
+plt.ylabel("Frequency")
+plt.show()'''
+
+'''# 2. Bar Chart: Top 10 highest-grossing movies
+# This bar chart highlights the top 10 movies that generated the highest world gross revenue.
+top_movies = df.nlargest(10, "WorldGross")
+plt.figure(figsize=(10, 6))
+sns.barplot(y=top_movies["Movie"], x=top_movies["WorldGross"], palette="viridis")
+plt.title("Top 10 Highest-Grossing Movies", fontsize=14, fontweight='bold')
+plt.xlabel("World Gross (in millions)")
+plt.ylabel("Movie")
+plt.show()'''
+
+'''# 3. Box Plot: Budget distribution by genre
+# This box plot compares the budgets of different genres, highlighting variations and outliers.
+plt.figure(figsize=(12, 6))
+sns.boxplot(x="Budget", y="Genre", data=df, palette="Set2")
+plt.title("Budget Distribution by Genre", fontsize=14, fontweight='bold')
+plt.xlabel("Budget (in millions)")
+plt.ylabel("Genre")
+plt.show()'''
+
+'''# 4. Correlation Heatmap
+# The heatmap visualizes correlations between numerical features, helping us understand key relationships.
+plt.figure(figsize=(12, 6))
+corr_matrix = df.select_dtypes(include=["number"]).corr()
+sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", fmt=".2f", linewidths=0.5)
+plt.title("Correlation Heatmap", fontsize=14, fontweight='bold')
+plt.show()'''
+
+'''# 5. Horizontal Bar Chart: Lead studios by total world gross
+# This chart highlights the most financially successful movie studios based on cumulative world gross.
+studio_gross = df.groupby("LeadStudio")["WorldGross"].sum().nlargest(10)
+plt.figure(figsize=(12, 6))
+sns.barplot(x=studio_gross, y=studio_gross.index, palette="magma")
+plt.title("Top 10 Studios by Total World Gross", fontsize=14, fontweight='bold')
+plt.xlabel("Total World Gross (in billions)")
+plt.ylabel("Lead Studio")
+plt.show()'''
+
+'''# Conclusion of Movie Data Analysis
+# From the visualizations and data analysis, we can derive several key insights:
+
+# 1. Distribution of World Gross (Histogram)
+# - The earnings distribution is skewed, with only a few movies making extremely high revenue.
+# - Blockbuster movies significantly impact total earnings.
+
+# 2. Top 10 Highest-Grossing Movies (Bar Chart)
+# - A small number of movies dominate the box office, likely major franchises.
+# - Strong marketing and established fan bases contribute to success.
+
+# 3. Budget Distribution by Genre (Box Plot)
+# - Action and adventure genres typically have higher budgets.
+# - Outliers suggest some movies have exceptionally high budgets compared to the industry average.
+
+# 4. Correlation Analysis (Heatmap)
+# - Budget and world gross have a strong positive correlation, meaning higher budgets usually yield higher revenue.
+# - Profitability isn't solely dependent on budget; marketing and audience reception also play crucial roles.
+# - The number of theaters during opening weekends positively impacts revenue.
+
+# 5. Top 10 Studios by World Gross (Horizontal Bar Chart)
+# - A few major studios control most of the industry revenue.
+# - These studios produce and distribute high-budget movies with extensive marketing.
+
+# Final Insights:
+# - High-budget movies often perform well, but profitability is not guaranteed.
+# - Major studios dominate the industry and influence global box office earnings.
+# - Marketing, audience engagement, and franchise strength are key to a movie’s success.
+'''
+
+
+
+
+
+
