@@ -328,7 +328,6 @@ BAR PLOT
 # Problem Statement: Comparing categorical data using a bar chart.
 # Question: Which category has the highest value in the given dataset?
 
-
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
@@ -372,7 +371,7 @@ program28.py
 
 list1 = [2, 3, 5]
 
-string = ' '.join(map(str, list1)) # convert a list of items of tyep other than str into a string
+string = ' '.join(map(str, list1)) # convert a list of items of type other than str into a string
 print(string)
 print(type(string))
 
@@ -443,7 +442,6 @@ program32.py
 # HISTOGRAM
 # Problem Statement: Analyzing the frequency distribution of normally distributed data.
 # Question: How is the data distributed across different bins?
-
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -667,7 +665,6 @@ corr = data_df.corr()
 sns.heatmap(corr, annot=True, cmap="coolwarm", linewidths=0.5)
 plt.title("Heatmap")
 plt.show()
-
 
 ------------------------------------------------------------
 import numpy as np
